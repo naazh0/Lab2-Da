@@ -16,7 +16,7 @@ using namespace std;
 	}
 }*/
 
-void imprimir(int n, int a[][]){
+void imprimir(int n, int** a){
 	int i, j;
 	for(i = 0; i < n; i++){
 		cout << endl;
@@ -31,7 +31,11 @@ int main(){
 	int i, j;
 	int a, b, c;
 	cin >> a >> b;
-	int mat[a][a];
+	//Inicializar matriz
+
+	int** mat = new int*[a];
+	for(i = 0; i < a; i++)
+		mat[i] = new int[a];
 	//------Inserción de elementos a la matriz--------
 	for(i = 0; i < a ; i++){
 		cout << endl;
@@ -43,5 +47,10 @@ int main(){
 	imprimir(a, mat);
 	cout << endl;
 	
+	//Destruir matriz
+	for(i = 0; i < a; i++)
+		delete mat[i];
+	delete mat;
+
 	return 0;
 }
